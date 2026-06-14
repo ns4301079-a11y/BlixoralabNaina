@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blixora Labs – Simulation Portal</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0d1117;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* NAV */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ff6b35;
+            letter-spacing: 0.5px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #ffffff; }
+
+        /* HERO */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 88vh;
+            text-align: center;
+            padding: 3rem 1.5rem;
+            background: radial-gradient(ellipse at 50% 40%, #1c2333 0%, #0d1117 65%);
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255, 107, 53, 0.12);
+            border: 1px solid rgba(255, 107, 53, 0.35);
+            color: #ff6b35;
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 1.8rem;
+        }
+        .hero h1 {
+            font-size: clamp(2.4rem, 7vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, #ffffff 50%, #ff6b35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #8b949e;
+            max-width: 480px;
+            line-height: 1.75;
+            margin-bottom: 2.5rem;
+        }
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-primary {
+            background: #ff6b35;
+            color: #ffffff;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .btn-primary:hover { background: #e55a25; transform: translateY(-2px); }
+        .btn-outline {
+            background: transparent;
+            color: #ffffff;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: border-color 0.2s, transform 0.15s;
+        }
+        .btn-outline:hover { border-color: #ff6b35; transform: translateY(-2px); }
+
+        /* FEATURES */
+        .features {
+            padding: 5rem 2rem;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+        .section-label {
+            text-align: center;
+            color: #ff6b35;
+            font-size: 0.78rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #e6edf3;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1.4rem;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            padding: 1.8rem 1.5rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .card:hover { border-color: #ff6b35; transform: translateY(-4px); }
+        .card-icon { font-size: 1.9rem; margin-bottom: 1rem; }
+        .card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: #e6edf3; }
+        .card p { color: #8b949e; font-size: 0.88rem; line-height: 1.65; }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #484f58;
+            font-size: 0.82rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            nav { padding: 1rem 1.2rem; }
+            .nav-links { gap: 1.2rem; }
+            .features { padding: 3.5rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">⚡ Blixora Labs</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Simulations</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="badge">Simulation Portal</div>
+        <h1>Blixora Labs</h1>
+        <p>Advanced simulation environment for research, testing, and exploration. Built for speed, precision, and insight.</p>
+        <div class="btn-group">
+            <a href="#" class="btn-primary">Get Started</a>
+            <a href="#" class="btn-outline">Learn More</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <p class="section-label">What We Offer</p>
+        <h2 class="section-title">Built for simulation</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">🔬</div>
+                <h3>Simulations</h3>
+                <p>Run powerful simulations with real-time feedback and precise analysis.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Fast Processing</h3>
+                <p>Optimized engine for high-speed computation and instant results.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>Data Insights</h3>
+                <p>Visualize and export your simulation data with ease and clarity.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔒</div>
+                <h3>Secure</h3>
+                <p>Your data and experiments are always safe, private, and protected.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 Blixora Labs. All rights reserved.
+    </footer>
+
+</body>
+</html>
